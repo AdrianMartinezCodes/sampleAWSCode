@@ -22,7 +22,7 @@ dev = [
     "ruff","pre-commit",
 ]
 test = [
-    "pytest","httpx", "respx", "pytest-asyncio"
+    "pytest","httpx", "respx", "pytest-asyncio", "aioresponses"
 ]
 all = [
   "sampleApi[dev,test]"
