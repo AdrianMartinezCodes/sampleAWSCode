@@ -49,7 +49,6 @@ async def test_metadata_key_not_found():
             response = await client.get(
                 f"/metadata?meta_data_url={BASE_META_URL}&key=not-real"
             )
-            payload = response.json()
             assert response.status_code == 502
 
 
@@ -58,5 +57,4 @@ async def test_no_metadata_url_provided():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         response = await client.get("/metadata")
-        payload = response.json()
         assert response.status_code == 422
