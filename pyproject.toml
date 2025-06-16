@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sampleApi"
+version='1.0.0'
+description= 'Sample Api'
+requires-python= '>=3.12'
+authors = [
+  {name="Adrian Martinez", email="afmartinez1215@gmail.com"}]
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "fastapi","aiohttp","uvicorn[standard]"
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff","pre-commit",
+]
+test = [
+    "pytest","httpx", "respx", "pytest-asyncio"
+]
+all = [
+  "sampleApi[dev,test]"
+]
+
+[tool.setuptools.packages]
+find = {}
+
+[tool.coverage.run]
+omit = ["tests/*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+env_files = [".env.example"]
+testpaths = ["tests"]
+
+[pytest]
+pythonpath = "."
